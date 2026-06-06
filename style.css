@@ -201,7 +201,7 @@ p { color: var(--text-muted); }
   /* Logo at natural container left edge with standard 24px padding from .container */
 }
 /* Logo: natural flow, no extra margin adjustments */
-.logo { flex-shrink: 0;}
+.logo { flex-shrink: 0; }
 .logo-img-wrap { height: 52px; display: flex; align-items: center; }
 .logo-img-wrap img { height: 100%; width: auto; object-fit: contain; }
 
@@ -426,6 +426,7 @@ p { color: var(--text-muted); }
     transform:translateX(-50%);
     display:flex;
     gap:8px;
+    z-index: 30;
 }
 
 .dot{
@@ -956,7 +957,6 @@ p { color: var(--text-muted); }
 
 .faq-item {
   border-bottom: 1px solid var(--border);
-  /* Remove the default triangle marker */
 }
 /* Hide the default browser disclosure arrow */
 .faq-item summary { list-style: none; }
@@ -1043,52 +1043,163 @@ details[open] > .faq-question {
 .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
 
 /* =============================================
-   RESPONSIVE
+   RESPONSIVE — MOBILE FIRST
    ============================================= */
+
+/* ── TABLET ≤ 1024px ── */
 @media (max-width: 1024px) {
   .container { padding: 0 32px; }
+  .header-inner { gap: 32px; }
+  .header-cta { margin-right: 0; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-img-wrap { max-width: 480px; margin: 0 auto; }
   .lasik-grid { grid-template-columns: 1fr; }
   .lasik-img-wrap { max-width: 520px; }
   .treatments-grid { grid-template-columns: repeat(4, 1fr); }
   .doctors-grid { grid-template-columns: 1fr; }
-  .contact-grid { grid-template-columns: 1fr; }
   .contact-card { grid-template-columns: 1fr; gap: 32px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
+/* ── MOBILE ≤ 768px ── */
 @media (max-width: 768px) {
-  .container { padding: 0 20px; }
-  .topbar { font-size: 0.75rem; padding: 6px 16px; }
-  .section { padding: 56px 0; }
+  .container { padding: 0 16px; }
+  .section { padding: 48px 0; }
+
+  /* Top bar */
+  .topbar { font-size: 0.72rem; padding: 6px 16px; flex-direction: column; gap: 4px; text-align: center; }
+  .topbar-right { gap: 12px; justify-content: center; }
+
+  /* Header */
+  .header-inner { gap: 12px; }
+  .logo-img-wrap { height: 44px; }
+  .hamburger { display: flex; }
+  .header-cta { display: none; }
+
+  /* Nav drawer */
   .nav { display: none; position: fixed; top: 0; left: 0; width: 80vw; max-width: 320px; height: 100vh; background: #fff; z-index: 9999; box-shadow: 4px 0 24px rgba(0,0,0,0.15); padding: 80px 24px 32px; overflow-y: auto; transform: translateX(-100%); transition: transform 0.35s ease; }
   .nav.open { display: block; transform: translateX(0); }
   .nav > ul { flex-direction: column; gap: 0; }
-  .nav > ul > li > a { padding: 12px 8px; border-bottom: 1px solid var(--border); border-radius: 0; font-size: 1rem; }
+  .nav > ul > li > a { padding: 13px 8px; border-bottom: 1px solid var(--border); border-radius: 0; font-size: 1rem; }
   .dropdown { position: static; box-shadow: none; border: none; padding: 0 0 0 16px; opacity: 1; visibility: visible; transform: none; display: none; }
   .has-dropdown.open .dropdown { display: block; }
-  .hamburger { display: flex; }
-  .header-cta { display: none; }
-  .hero-slider { height: 70vh; min-height: 400px; }
-  .slide-text h1 { font-size: 1.8rem; }
-  .slide-text p { display: none; }
-  .stats-grid { grid-template-columns: 1fr; gap: 24px; }
-  .stat-divider { display: none; }
-  .treatments-grid { grid-template-columns: repeat(2, 1fr); }
-  .review-slide-group { grid-template-columns: 1fr; }
-  .blogs-grid { grid-template-columns: 1fr; }
-  .contact-card { padding: 28px 20px; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .empanelments-inner { flex-direction: column; text-align: center; }
-  .about-badges-row { flex-wrap: wrap; }
-  .lasik-card-content { flex-direction: column; align-items: flex-start; }
+
+  /* Hero — stack image above text */
+  .hero-slider { height: auto; min-height: 0; overflow: visible; background: #eef3f7; }
+  .slides-wrapper { height: auto; }
+  .slide { position: relative; inset: auto; opacity: 1; display: none; z-index: 1; transition: none; }
+  .slide.active { display: block; opacity: 1; }
+  .slide-bg { position: relative; width: 100%; height: 240px; }
+  .slide-img-wrap { border-radius: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; height: 240px; }
+  .slide-content { position: relative; height: auto; padding: 28px 0 40px; }
+  .slide-text { width: 100%; max-width: 100%; }
+  .slide-tag { font-size: 10px; padding: 6px 12px; margin-bottom: 12px; }
+  .slide-text h1 { font-size: 1.85rem; line-height: 1.2; margin-bottom: 12px; }
+  .slide-text p { font-size: 0.95rem; line-height: 1.65; margin-bottom: 20px; display: block; }
+  .hero-trust { margin-top: 20px; gap: 12px; }
+  .slider-btn { width: 36px; height: 36px; top: 120px; }
+  .slider-btn.prev { left: 8px; }
+  .slider-btn.next { right: 8px; }
+  .slider-dots { bottom: 12px; position: relative; margin-top: 8px; transform: none; left: auto; display: flex; justify-content: center; }
+
+  /* About */
+  .about-grid { grid-template-columns: 1fr; gap: 28px; }
+  .about-img-wrap { max-width: 100%; }
+  .about-img { aspect-ratio: 4/3; }
+  .about-content h2 { font-size: 1.5rem; }
+  .about-badges-row { flex-wrap: wrap; gap: 10px; }
+  .about-badge-card { min-width: calc(33% - 8px); flex: 1; padding: 12px 10px; }
+  .about-badge-card img { width: 48px; height: 48px; }
+  .about-badge-card span { font-size: 0.75rem; }
+
+  /* Stats */
+  .stats-grid { grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+  .stat-divider { display: block; width: 1px; height: 40px; background: rgba(0,0,0,0.12); }
+  .stat-item h3 { font-size: 1.5rem; }
+  .stat-item span { font-size: 1.3rem; }
+  .stat-item p { font-size: 0.72rem; }
+
+  /* Lasik */
+  .lasik-grid { grid-template-columns: 1fr; gap: 24px; }
+  .lasik-img-wrap { max-width: 100%; }
+  .lasik-img { aspect-ratio: 4/3; }
+  .lasik-card-content { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .lasik-card { padding: 20px; }
+  .lasik-cards { gap: 16px; }
+
+  /* Treatments */
+  .treatments-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .treatments-footer { flex-direction: column; gap: 12px; }
+
+  /* Doctors */
+  .doctors-grid { grid-template-columns: 1fr; gap: 14px; }
+  .doctor-card { gap: 14px; }
+  .doctor-img { width: 88px; height: 96px; }
+
+  /* Reviews */
+  .reviews-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .review-slide-group { grid-template-columns: 1fr; gap: 14px; }
+
+  /* Blogs */
+  .blogs-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  /* Contact */
+  .contact-card { grid-template-columns: 1fr; padding: 24px 18px; gap: 24px; }
+  .contact-info h2 { font-size: 1.3rem; }
+  .contact-detail { padding: 12px 14px; }
+  .form-row { grid-template-columns: 1fr; gap: 12px; }
+
+  /* Empanelments */
+  .empanelments-inner { flex-direction: column; text-align: center; gap: 14px; }
+  .empanel-left { flex-direction: column; align-items: center; }
+
+  /* FAQ */
+  .faq-list { max-width: 100%; }
+  .faq-question { font-size: 0.88rem; padding: 15px 0; }
+
+  /* Footer */
+  .footer { padding: 40px 0 0; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+  .footer-brand p { max-width: 100%; }
 }
 
+/* ── SMALL MOBILE ≤ 480px ── */
 @media (max-width: 480px) {
-  .section { padding: 40px 0; }
-  .treatments-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  h1 { font-size: 1.7rem; }
-  h2 { font-size: 1.45rem; }
+  .container { padding: 0 12px; }
+  .section { padding: 36px 0; }
+
+  /* Hero */
+  .slide-bg { height: 200px; }
+  .slide-img-wrap { height: 200px; }
+  .slide-text h1 { font-size: 1.5rem; }
+  .slide-text p { font-size: 0.88rem; }
+  .slider-btn { top: 100px; }
+
+  /* Stats — stack vertically */
+  .stats-grid { grid-template-columns: 1fr; gap: 16px; }
+  .stat-divider { display: none; }
+  .stat-item h3 { font-size: 1.8rem; }
+
+  /* Treatments — 2 cols */
+  .treatments-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .treatment-card p { font-size: 0.76rem; }
+
+  /* About badges — 2 per row */
+  .about-badge-card { min-width: calc(50% - 5px); }
+
+  /* Contact */
+  .contact-card { padding: 20px 12px; }
+  .contact-info h2 { font-size: 1.1rem; }
+
+  /* Typography */
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.28rem; }
+  h3 { font-size: 1.05rem; }
+
+  /* Buttons */
+  .btn { padding: 10px 18px; font-size: 0.84rem; }
+  .btn-full { padding: 13px; font-size: 0.9rem; }
+
+  /* Footer */
+  .footer-grid { gap: 20px; }
 }
