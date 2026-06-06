@@ -49,15 +49,15 @@ document.addEventListener('DOMContentLoaded', function () {
   var sliderTimer = null;
 
   function goToSlide(index) {
-  if (!slides.length) return;
-  slides[currentSlide].classList.remove('active');
-  slides[currentSlide].style.zIndex = 1;           /* ← reset old */
-  if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
-  currentSlide = (index + slides.length) % slides.length;
-  slides[currentSlide].style.zIndex = 3;           /* ← bring new above others */
-  slides[currentSlide].classList.add('active');
-  if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-}
+    if (!slides.length) return;
+    slides[currentSlide].classList.remove('active');
+    slides[currentSlide].style.zIndex = 1;
+    if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+    currentSlide = (index + slides.length) % slides.length;
+    slides[currentSlide].style.zIndex = 3;
+    slides[currentSlide].classList.add('active');
+    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+  }
 
   function startSlider() {
     sliderTimer = setInterval(function () { goToSlide(currentSlide + 1); }, 5000);
@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (slides.length) startSlider();
 
   /* ---- REVIEWS SLIDER ---- */
-  /* Works with: #reviewsTrack + .slider-dot-btn (your actual HTML) */
   var reviewsTrack = document.getElementById('reviewsTrack');
   var reviewDotBtns = document.querySelectorAll('.reviews-controls .slider-dot-btn');
   var reviewGroups = document.querySelectorAll('#reviewsTrack .review-slide-group');
@@ -111,14 +110,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var answer = item.querySelector('.faq-answer');
       var isOpen = this.classList.contains('open');
 
-      /* close all */
       document.querySelectorAll('.faq-question.open').forEach(function (q) {
         q.classList.remove('open');
         var a = q.closest('.faq-item').querySelector('.faq-answer');
         if (a) a.classList.remove('open');
       });
 
-      /* open this one if it was closed */
       if (!isOpen && answer) {
         this.classList.add('open');
         answer.classList.add('open');
@@ -166,23 +163,138 @@ document.addEventListener('DOMContentLoaded', function () {
     counters.forEach(function (el) { cObserver.observe(el); });
   }
 
-  /* ---- APPOINTMENT FORM ---- */
-  var apptForm = document.getElementById('appointmentForm');
-  if (apptForm) {
-    apptForm.addEventListener('submit', function (e) {
+  /* ---- APPOINTMENT FORM (contact section) ---- */
+  /* ---- APPOINTMENT FORM VALIDATION ---- */
+var apptForm = document.getElementById('appointmentForm');
+if (apptForm) {
+  apptForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name    = document.getElementById('cf-name');
+    var phone   = document.getElementById('cf-phone');
+    var treat   = document.getElementById('cf-treatment');
+    var success = document.getElementById('cf-success');
+
+    var isValid = true;
+
+    /* Name */
+    if (!name.value.trim()) {
+      name.style.borderColor = '#e53935';
+      isValid = false;
+    } else {
+      name.style.borderColor = '#2e7d32';
+    }
+
+    /* Phone — must be 10 digits */
+    if (phone.value.trim().length !== 10) {
+      document.getElementById('cf-phone-wrap').style.borderColor = '#e53935';
+      isValid = false;
+    } else {
+      document.getElementById('cf-phone-wrap').style.borderColor = '#2e7d32';
+    }
+
+    /* Treatment */
+    if (!treat.value) {
+      treat.style.borderColor = '#e53935';
+      isValid = false;
+    } else {
+      treat.style.borderColor = '#2e7d32';
+    }
+
+    if (!isValid) return;
+
+    /* Success */
+    var btn = this.querySelector('button[type="submit"]');
+    btn.textContent = "Booked! We'll contact you soon.";
+    btn.style.background = '#1b5e20';
+    btn.disabled = true;
+
+    setTimeout(function () {
+      btn.textContent = 'Make an Appointment';
+      btn.style.background = '';
+      btn.disabled = false;
+      apptForm.reset();
+      name.style.borderColor = '';
+      document.getElementById('cf-phone-wrap').style.borderColor = '';
+      treat.style.borderColor = '';
+    }, 3000);
+
+  });
+
+  /* Phone: only allow numbers */
+  var phoneInput = document.getElementById('cf-phone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function () {
+      this.value = this.value.replace(/\D/g, '').slice(0, 10);
+    });
+  }
+}
+  /* ---- APPOINTMENT MODAL ---- */
+setTimeout(function() {
+  var modalOverlay = document.getElementById('modalOverlay');
+  var modalClose   = document.getElementById('modalClose');
+  var modalForm    = document.getElementById('modalForm');
+
+  if (!modalOverlay) {
+    console.error('Modal overlay not found!');
+    return;
+  }
+
+  function openModal() {
+    modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  var modalBtns = document.querySelectorAll('.open-modal');
+  console.log('Modal buttons found:', modalBtns.length);
+
+  modalBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal();
+    });
+  });
+
+  if (modalClose) {
+  modalClose.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    closeModal();
+  });
+}
+console.log('modalClose found:', modalClose);
+
+  modalOverlay.addEventListener('click', function(e) {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  if (modalForm) {
+    modalForm.addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = this.querySelector('button[type="submit"]');
-      btn.textContent = "Appointment Booked! We'll contact you soon.";
+      btn.textContent = "Booked! We'll contact you soon.";
       btn.style.background = '#1b5e20';
       btn.disabled = true;
-      setTimeout(function () {
+      setTimeout(function() {
         btn.textContent = 'Make an Appointment';
         btn.style.background = '';
         btn.disabled = false;
-        apptForm.reset();
-      }, 4000);
+        modalForm.reset();
+        closeModal();
+      }, 3000);
     });
   }
+}, 100);
 
   /* ---- ACTIVE NAV LINK ---- */
   var currentPage = window.location.pathname.split('/').pop() || 'index.html';
