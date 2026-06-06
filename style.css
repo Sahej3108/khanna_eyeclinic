@@ -598,6 +598,131 @@ p { color: var(--text-muted); }
   border-radius: 20px;
 }
 .tag i { font-size: 0.65rem; }
+/* =============================================
+   APPOINTMENT MODAL
+   ============================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  padding: 20px;
+}
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-overlay.open .modal-box {
+  transform: translateY(0);
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.modal-close:hover { background: var(--green); color: #fff; }
+.modal-box h3 {
+  font-size: 1.5rem;
+  color: #0d1b2a;
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+}
+.modal-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.modal-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+.modal-form-group label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #444;
+}
+.modal-form-group input,
+.modal-form-group select {
+  padding: 11px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition);
+  background: #fff;
+  font-family: inherit;
+}
+.modal-form-group input:focus,
+.modal-form-group select:focus { border-color: var(--green); }
+.modal-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.modal-phone {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color var(--transition);
+  background: #fff;
+}
+.modal-phone:focus-within { border-color: var(--green); }
+.modal-phone span {
+  padding: 11px 12px;
+  background: #f5f5f5;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #555;
+  border-right: 1px solid #ddd;
+  white-space: nowrap;
+}
+.modal-phone input {
+  border: none;
+  border-radius: 0;
+  flex: 1;
+  padding: 11px 12px;
+}
+.modal-phone input:focus { border: none; outline: none; }
+
+@media (max-width: 480px) {
+  .modal-box { padding: 24px 16px; }
+  .modal-form-row { grid-template-columns: 1fr; }
+}
 
 /* =============================================
    TREATMENTS & SURGERIES
@@ -605,21 +730,28 @@ p { color: var(--text-muted); }
 .treatments-section { background: #fff; }
 .treatments-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 .treatment-card {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
   transition: transform var(--transition);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0 0 20px 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow);
 }
-.treatment-card:hover { transform: translateY(-4px); }
-/* CHANGE 1: Fit images in container */
+.treatment-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .treatment-img {
   width: 100%;
-  aspect-ratio: 1 / 0.75;
-  border-radius: var(--radius);
-  margin-bottom: 10px;
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+  margin-bottom: 14px;
+  flex-shrink: 0;
 }
 .treatment-img img {
   width: 100%;
@@ -627,17 +759,28 @@ p { color: var(--text-muted); }
   object-fit: cover;
   display: block;
 }
-.treatment-card p {
-  font-weight: 600;
-  font-size: 0.88rem;
+.treatment-name {
+  font-weight: 700;
+  font-size: 0.95rem;
   color: var(--text);
+  padding: 0 16px;
+  margin-bottom: 8px;
+  text-align: center;
+
+}
+.treatment-desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  padding: 0 16px;
+  text-align: justify;
+  font-weight: 400;
 }
 .treatments-footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  margin-top: 36px;
+  margin-top: 40px;
 }
 
 /* =============================================
@@ -647,25 +790,24 @@ p { color: var(--text-muted); }
 .doctors-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 32px;
 }
 .doctor-card {
   background: #fff;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  padding: 24px;
+  padding: 36px;
   display: flex;
-  gap: 20px;
+  gap: 28px;
   align-items: flex-start;
   transition: all var(--transition);
   box-shadow: var(--shadow);
 }
 .doctor-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 .doctor-img-wrap { flex-shrink: 0; }
-/* CHANGE 1: Fit doctor images */
 .doctor-img {
-  width: 100px;
-  height: 110px;
+  width: 140px;
+  height: 160px;
   border-radius: var(--radius);
 }
 .doctor-img img {
@@ -674,10 +816,39 @@ p { color: var(--text-muted); }
   object-fit: cover;
   display: block;
 }
-.doctor-info h3 { font-size: 1.05rem; margin-bottom: 4px; }
-.doctor-title { font-size: 0.8rem; color: var(--green); font-weight: 600; display: block; margin-bottom: 8px; }
-.doctor-info p { font-size: 0.85rem; line-height: 1.65; }
+.doctor-info h3 {
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.doctor-title {
+  font-size: 0.95rem;
+  color: var(--green);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 12px;
+}
+.doctor-info p {
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
 
+/* Responsive */
+@media (max-width: 1024px) {
+  .doctors-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 768px) {
+  .doctor-card { padding: 24px; gap: 18px; }
+  .doctor-img { width: 110px; height: 125px; }
+  .doctor-info h3 { font-size: 1.15rem; }
+  .doctor-title { font-size: 0.88rem; }
+  .doctor-info p { font-size: 0.9rem; }
+}
+@media (max-width: 480px) {
+  .doctor-card { flex-direction: column; align-items: center; text-align: center; }
+  .doctor-img { width: 120px; height: 135px; }
+}
 /* =============================================
    REVIEWS
    ============================================= */
@@ -939,7 +1110,7 @@ p { color: var(--text-muted); }
    ============================================= */
 .empanelments-bar {
   background: var(--bg-light);
-  padding: 24px 0;
+  padding: 34px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -950,9 +1121,9 @@ p { color: var(--text-muted); }
   gap: 20px;
 }
 .empanel-left { display: flex; align-items: center; gap: 16px; }
-.empanel-left i { font-size: 1.8rem; color: var(--green); }
-.empanel-left strong { display: block; font-size: 0.95rem; color: var(--text); margin-bottom: 2px; }
-.empanel-left p { font-size: 0.84rem; margin: 0; }
+.empanel-left i { font-size: 2rem; color: var(--green); }
+.empanel-left strong { display: block; font-size: 1.5rem; color: var(--text); margin-bottom: 2px; }
+.empanel-left p { font-size: 1rem; margin: 0; }
 
 /* =============================================
    FAQ — uses native <details>/<summary>, zero JS
@@ -1207,4 +1378,189 @@ details[open] > .faq-question {
 
   /* Footer */
   .footer-grid { gap: 20px; }
+}
+/* =============================================
+   WHATSAPP FLOATING BUTTON
+   ============================================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 9998;
+  transition: all 0.3s ease;
+}
+.whatsapp-float:hover {
+  background: #1ebe5d;
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+}
+
+/* Pulse animation */
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #25d366;
+  z-index: -1;
+  animation: whatsapp-pulse 2s ease-out infinite;
+}
+@keyframes whatsapp-pulse {
+  0%   { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+}
+
+/* =============================================
+   INSURANCE DROPDOWN
+   ============================================= */
+.insurance-dropdown-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.insurance-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition);
+}
+
+.insurance-trigger i {
+  font-size: 0.75rem;
+  transition: transform var(--transition);
+}
+
+.insurance-dropdown-wrap:hover .insurance-trigger {
+  background: var(--green);
+  color: #fff;
+}
+
+.insurance-dropdown-wrap:hover .insurance-trigger i {
+  transform: rotate(180deg);
+}
+
+.insurance-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  border: 1px solid var(--border);
+  min-width: 280px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+  z-index: 500;
+}
+
+.insurance-dropdown-wrap:hover .insurance-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.insurance-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  color: var(--text);
+}
+
+.insurance-option:hover {
+  background: var(--green-light);
+}
+
+.insurance-option:hover strong {
+  color: var(--green);
+}
+
+.insurance-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--green-light);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.insurance-option:hover .insurance-icon {
+  background: var(--green);
+  color: #fff;
+}
+
+.insurance-option strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+  transition: color var(--transition);
+}
+
+.insurance-option p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.insurance-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 8px;
+}
+
+/* Highlight entire empanelments bar on dropdown hover */
+.empanelments-bar {
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.insurance-dropdown-wrap:hover ~ .empanel-left,
+.empanelments-inner:has(.insurance-dropdown-wrap:hover) {
+  background: transparent;
+}
+
+.empanelments-bar:has(.insurance-dropdown-wrap:hover) {
+  background: var(--green-light);
+  border-color: var(--green);
+}
+
+.empanelments-bar:has(.insurance-dropdown-wrap:hover) .empanel-left i {
+  color: var(--green-dark);
+}
+
+.empanelments-bar:has(.insurance-dropdown-wrap:hover) .empanel-left strong {
+  color: var(--green-dark);
 }
