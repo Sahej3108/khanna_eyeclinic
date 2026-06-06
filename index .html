@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khanna Eye Centre – Trusted Eye Care Since 1951</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <span><i class="far fa-clock"></i> Mon – Sun &nbsp; 8:00 AM – 8:00 PM</span>
+    <div class="topbar-right">
+      <a href="tel:9354409885"><i class="fas fa-phone"></i> 9354 409 885</a>
+      <a href="https://wa.me/919354409885" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-img-wrap">
+          <img src="assets/img/logo.jpg" alt="Khanna Eye Centre Logo" />
+        </div>
+      </a>
+      <nav class="nav" id="nav">
+        <ul>
+          <li class="has-dropdown">
+            <a href="treatments.html">Eye Treatments <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="treatments.html#lasik">LASIK Surgery</a></li>
+              <li><a href="treatments.html#icl">ICL Surgery</a></li>
+              <li><a href="treatments.html#cataract">Cataract Surgery</a></li>
+              <li><a href="treatments.html#retina">Retina Treatment</a></li>
+              <li><a href="treatments.html#cornea">Cornea Services</a></li>
+              <li><a href="treatments.html#glaucoma">Glaucoma</a></li>
+              <li><a href="treatments.html">View All Treatments</a></li>
+            </ul>
+          </li>
+          <li><a href="doctors.html">Our Doctors</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <a href="contact.html" class="btn btn-primary header-cta">Book Appointment</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SLIDER -->
+  <section class="hero-slider" id="heroSlider">
+    <div class="slides-wrapper" id="slidesWrapper">
+
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <div class="slide-bg">
+          <div class="slide-img-wrap">
+            <img src="assets/img/hero_image.jpg" alt="Eye care hero" />
+          </div>
+          <div class="slide-overlay"></div>
+        </div>
+        <div class="container slide-content">
+          <div class="slide-text">
+            <span class="slide-tag">Passion for Perfection</span>
+            <h1>Top Eye Hospital<br />in Delhi</h1>
+            <p>Delivering world-class eye care with precision, compassion,<br />and advanced technology.</p>
+            <a href="contact.html" class="btn btn-primary">Book An Appointment</a>
+            <div class="hero-trust">
+              <div class="trust-item">
+                
+                <div>
+                  <strong>Treating Since 1951</strong>
+                </div>
+              </div>
+              <div class="trust-divider"></div>
+              <div class="trust-item">
+                <strong>1.5M+ Happy Patients</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <div class="slide-bg">
+          <div class="slide-img-wrap">
+            <img src="assets/img/hero2.jpg" alt="Trusted Eye Hospital" />
+          </div>
+          <div class="slide-overlay"></div>
+        </div>
+        <div class="container slide-content">
+          <div class="slide-text">
+            <span class="slide-tag">Your Trusted Partner</span>
+            <h1>Your Trusted Eye<br />Hospital In Delhi</h1>
+            <p>Expert doctors, advanced technology, and compassionate care,<br />because your vision deserves nothing but the best.</p>
+            <a href="contact.html" class="btn btn-primary">Reach Out To Us</a>
+            <div class="hero-trust">
+              <div class="trust-item"><strong>Treating Since 1951</strong></div>
+              <div class="trust-divider"></div>
+              <div class="trust-item"><strong>1.5M+ Happy Patients</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <div class="slide-bg">
+          <div class="slide-img-wrap">
+            <img src="assets/img/hero3.jpg" alt="75 Years of Excellence" />
+          </div>
+          <div class="slide-overlay"></div>
+        </div>
+        <div class="container slide-content">
+          <div class="slide-text">
+            <span class="slide-tag">75 Years of Excellence</span>
+            <h1>Excellence in<br />Eye Care</h1>
+            <p>Delivering trusted eye care through expertise, innovation,<br />and compassion since 1950.</p>
+            <a href="contact.html" class="btn btn-primary">Get Eye Care Today</a>
+            <div class="hero-trust">
+              <div class="trust-item"><strong>Treating Since 1951</strong></div>
+              <div class="trust-divider"></div>
+              <div class="trust-item"><strong>1.5M+ Happy Patients</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Slider Controls -->
+    <button class="slider-btn prev" id="sliderPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="slider-btn next" id="sliderNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    <div class="slider-dots" id="sliderDots">
+      <button class="dot active" data-index="0"></button>
+      <button class="dot" data-index="1"></button>
+      <button class="dot" data-index="2"></button>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section section">
+    <div class="container about-grid">
+
+      <!-- LEFT: Image only -->
+      <div class="about-img-wrap">
+        <div class="img-container about-img">
+          <img src="assets/img/clinic.avif" alt="Khanna Eye Centre Building" />
+        </div>
+      </div>
+
+      <!-- RIGHT: Text + badge cards + button -->
+      <div class="about-content">
+        <h2>Caring for Your Vision Since <span class="accent">1951</span></h2>
+        <p>Established in 1951 by renowned Eye Surgeon Dr. B.N. Khanna, Khanna Eye Centre has grown into the best eye hospital in Delhi, providing advanced eye care with a commitment to excellence and affordability. With a leading eye hospital in Nirman Vihar, we offer comprehensive eye care services backed by experienced specialists, advanced technology, and international standards of treatment.
+</p>
+        <p>Recognized as a premier eye care center in Nirman Vihar, Delhi, Khanna Eye Centre continues its mission of empowering vision through innovation and compassionate care. Our NABH-accredited facility is dedicated to delivering exceptional clinical outcomes and personalized treatment through advanced technology, experienced specialists, and a patient-first approach. Whether you need routine eye care, advanced surgical treatment, or specialized ophthalmic services, we are committed to helping you achieve the best possible vision and eye health.
+</p>
+
+        <!-- Badge cards row -->
+        <div class="about-badges-row">
+          <div class="about-badge-card">
+            <img src="assets/img/nabh_logo.jpg" alt="NABH Accredited" />
+            <span>NABH Accredited</span>
+          </div>
+          <div class="about-badge-card">
+            <img src="assets/img/nabh_logo.jpg" alt="Award" />
+            <span>Awward name</span>
+          </div>
+          <div class="about-badge-card">
+            <img src="assets/img/nabh_logo.jpg" alt="Award" />
+            <span>Awward name</span>
+          </div>
+        </div>
+
+        <a href="about.html" class="btn btn-outline">About Us <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <h3 class="counter" data-target="50">50</h3><span>+</span>
+        <p>Years of Experience</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <h3 class="counter" data-target="150000">150,000</h3><span>+</span>
+        <p>Patient Treated</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <h3 class="counter" data-target="800000">800,000</h3><span>+</span>
+        <p>Successful Surgeries</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEE WITHOUT GLASSES -->
+  <section class="lasik-section section">
+    <div class="container lasik-grid">
+      <div class="lasik-img-wrap">
+
+        <div class="img-container lasik-img">
+        <img src="assets/img/see_without_glass.jpg" alt="Lasik Surgery" class="lasik-badge" />
+
+        </div>
+        
+        <div class="lasik-label">See Without Glasses</div>
+
+      </div>
+      <div class="lasik-cards">
+                          <h2>See Without Glasses<span class="accent"></span></h2>
+
+        <div class="lasik-card">
+          <div class="lasik-card-content">
+            <div>
+              <h3>Lasik Surgery</h3>
+              <p>Do you wish to get freedom from your glasses and contact lenses? Get LASIK surgery and experience clear, hassle-free vision with advanced laser technology, expert care, and quick recovery.</p>
+              <div class="tags">
+                <span class="tag"><i class="fas fa-hashtag"></i>10-15 Min Procedure</span>
+                <span class="tag"><i class="fas fa-hashtag"></i>Quick Recovery</span>
+              </div>
+            </div>
+            <a href="treatments.html#lasik" class="btn btn-outline-sm">Explore Lasik</a>
+          </div>
+        </div>
+        <div class="lasik-card">
+          <div class="lasik-card-content">
+            <div>
+              <h3>ICL Surgery</h3>
+              <p>Unfit for LASIK? Don't worry, we've got you covered. Our ICL surgery is the best option for high-power vision correction.</p>
+              <div class="tags">
+                <span class="tag"><i class="fas fa-hashtag"></i>10-15 Min Procedure</span>
+                <span class="tag"><i class="fas fa-hashtag"></i>Quick Recovery</span>
+              </div>
+            </div>
+            <a href="treatments.html#icl" class="btn btn-outline-sm">Explore ICL</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TREATMENTS & SURGERIES -->
+  <section class="treatments-section section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Treatments &amp; Surgeries</h2>
+      </div>
+      <div class="treatments-grid">
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/cataract.jpg" alt="Cataract Treatment" class="treatment-badge" />
+          </div>
+          <p>Cataract Surgery</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/iol.jpg" alt="ICL Surgery" class="treatment-badge" />
+          </div>
+          <p>IOL</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/retina_treatment.jpg" alt="Retina Treatment" class="treatment-badge" />
+          </div>
+          <p>Retina Treatment</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/cornea.jpg" alt="Cornea Treatment" class="treatment-badge" />
+          </div>
+          <p>Cornea Services</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/dry_eye.jpg" alt="Dry Eye Treatment" class="treatment-badge" />
+          </div>
+          <p>Dry Eye Treatment</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/glaucoma.jpg" alt="Glaucoma Treatment" class="treatment-badge" />
+          </div>
+          <p>Glaucoma</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/Diabetic Retinopathy.jpg" alt="Diabetic Retinopathy Treatment" class="treatment-badge" />
+          </div>
+          <p>Diabetic Retinopathy Treatment</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/Pediatric Eye Care.jpg" alt="Pediatric Eye Care" class="treatment-badge" />
+          </div>
+          <p>Pediatric Ophthamology & Squnit</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/Oculoplasty Services.jpg" alt="Oculoplasty Servces" class="treatment-badge" />
+          </div>
+          <p>Oculoplasty Services</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/Uvea Services.jpg" alt="ICL Surgery" class="treatment-badge" />
+          </div>
+          <p>Uvea Services</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/Neuro Ophthamology Servies.jpg" alt="Retina Treatment" class="treatment-badge" />
+          </div>
+          <p>Neuro Ophthamology Servies</p>
+        </div>
+        <div class="treatment-card">
+          <div class="img-container treatment-img">
+            <img src="assets/img/Computer Vision Syndrome Treatment.jpg" alt="Cornea Treatment" class="treatment-badge" />
+          </div>
+          <p>Computer Vision Syndrome Treatment</p>
+        </div>
+      </div>
+      <div class="treatments-footer">
+        <a href="tel:01149147824" class="btn btn-green-outline"><i class="fas fa-phone"></i> 011-49147824</a>
+        <a href="treatments.html" class="btn btn-outline">View all Treatments <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+    </div>
+
+    
+  </section>
+
+  <!-- OUR EXPERT DOCTORS -->
+  <section class="doctors-section section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Expert Doctors</h2>
+      </div>
+      <div class="doctors-grid">
+        <div class="doctor-card">
+          <div class="doctor-img-wrap">
+            <div class="img-container doctor-img">
+              <img src="assets/img/dr1.jpg" alt="Dr. Rajinder Khanna" class="doctor-badge" />
+            </div>
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Rajinder Khanna</h3>
+            <span class="doctor-title">Chief Surgeon</span>
+            <p>Dr. Rajinder Khanna is one of the Leading Cataract and refractive surgeons in Delhi NCR, having an experience of more than 35 Years in Private Practice. He has been actively involved in the surgical training of various ophthalmologists across India.</p>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <div class="doctor-img-wrap">
+            <div class="img-container doctor-img">
+              <img src="assets/img/dr2.jpg" alt="Dr. Aman Khanna" class="doctor-badge" />
+            </div>
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Aman Khanna</h3>
+            <span class="doctor-title">Phaco, Vitreo-Retina &amp; Uvea Consultant</span>
+            <p>With over 15 years of experience, Dr. Aman Khanna specializes in the diagnosis and treatment of Diabetic Retinopathy, Retinal Detachment, Age-Related Macular Degeneration (ARMD), and Uveitis, delivering advanced retinal care with precision and expertise.</p>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <div class="doctor-img-wrap">
+            <div class="img-container doctor-img">
+              <img src="assets/img/dr3.jpg" alt="Dr. Ankita Khanna" class="doctor-badge" />
+            </div>
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Ankita Khanna</h3>
+            <span class="doctor-title">Cornea, Phaco &amp; Refractive Consultant</span>
+            <p>Dr. Ankita Khanna has 15+ years of expertise in corneal and speculum removal surgeries. Over the years, she has helped patients achieve a clear vision. </p>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <div class="doctor-img-wrap">
+            <div class="img-container doctor-img">
+              <img src="assets/img/dr4.jpg" alt="Dr. Deepak Aggarwal" class="doctor-badge" />
+            </div>
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Deepak Aggarwal</h3>
+            <span class="doctor-title">Vitreo-Retinal Surgeon &amp; Uvea Specialist</span>
+            <p>With over 15 years of experience, Dr. Deepak Aggarwal specializes in advanced retinal treatments and Microincision Vitrectomy Surgery (MIVS), offering comprehensive care for complex retinal and uveal disorders.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-cta">
+        <a href="doctors.html" class="btn btn-outline">All Doctors <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <!-- CHANGE 6: Restructured to 2 reviews per slide (3 slide-groups for 6 reviews) -->
+  <section class="reviews-section section">
+    <div class="container">
+      <div class="reviews-header">
+        <div class="google-rating">
+          <img src="assets/img/google.jpg" alt="Google" class="google-icon" />
+          <div class="rating-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>4.9 <small>(1,513 reviews)</small></span>
+          </div>
+        </div>
+        <a href="testimonials.html" class="btn btn-outline-sm">All Reviews <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="reviews-slider" id="reviewsSlider">
+        <div class="reviews-track" id="reviewsTrack">
+
+          <!-- Slide Group 1: Reviews 1 & 2 -->
+          <div class="review-slide-group">
+            <div class="review-card">
+              <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p>"Best experience with Dr Aman Khanna in Khanna Eye Centre Hospital, Nirman Vihar. My father had cataract surgery recently, and the experience was excellent from start to finish. The staff was kind, professional, and very reassuring. And all staff behaviour is very cool."</p>
+              <div class="reviewer"><strong>Monu Kanojiya</strong></div>
+            </div>
+            <div class="review-card">
+              <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p>"I had laser cataract surgery here and am very happy with the results. The staff was professional, the process was smooth, and their care was excellent. I highly recommend this centre for cataract and other eye surgeries."</p>
+              <div class="reviewer"><strong>Tashu Singh</strong></div>
+            </div>
+          </div>
+
+          <!-- Slide Group 2: Reviews 3 & 4 -->
+          <div class="review-slide-group">
+            <div class="review-card">
+              <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p>"My mother had her cataract surgery done here, and the experience was excellent. The surgery was very successful. The doctors are highly professional, and the entire staff is very kind, supportive, and helpful. Highly recommended Khanna Eye Centre."</p>
+              <div class="reviewer"><strong>Shweta Kumar</strong></div>
+            </div>
+            <div class="review-card">
+              <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p>"My father had cataract surgery recently, and the experience was excellent from start to finish. The staff was kind, professional, and very reassuring. The procedure was quick and painless, and vision has improved dramatically. I highly recommend it!"</p>
+              <div class="reviewer"><strong>Sonal Singh</strong></div>
+            </div>
+          </div>
+
+          <!-- Slide Group 3: Reviews 5 & 6 -->
+          <div class="review-slide-group">
+            <div class="review-card">
+              <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p>"My Father's cataract surgery was an excellent experience here. The doctors were professional, patient, and explained the procedure clearly. The centre is clean, well-organized, and uses advanced technology. Highly recommend!"</p>
+              <div class="reviewer"><strong>Prakash Paswan</strong></div>
+            </div>
+            <div class="review-card">
+              <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p>"My mother underwent cataract surgery in both eyes. The outcome was so good that she was very happy, and the doctor and staff were very nice. I advise anyone with an eye problem to visit Khanna Eye Centre."</p>
+              <div class="reviewer"><strong>Shalini Gautam</strong></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="reviews-controls">
+        <button class="slider-dot-btn active" data-rev="0"></button>
+        <button class="slider-dot-btn" data-rev="1"></button>
+        <button class="slider-dot-btn" data-rev="2"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOGS -->
+  <section class="blogs-section section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Latest Articles</span>
+        <h2>Understanding Eye Health &amp; Advanced Vision Care</h2>
+      </div>
+      <div class="blogs-grid">
+        <div class="blog-card">
+          <div class="img-container blog-img">
+            <img src="assets/img/blog_1.jpg" alt="Eye Care Tips" class="blog-badge" />
+          </div>
+          <div class="blog-content">
+            <h4>5 effective ways to take care of your eyes</h4>
+            <a href="blogs.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="img-container blog-img">
+            <img src="assets/img/blog_2.jpg" alt="Robotic Cataract Surgery" class="blog-badge" />
+          </div>
+          <div class="blog-content">
+            <h4>Facts about Robotic Cataract Surgery</h4>
+            <a href="blogs.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="img-container blog-img">
+            <img src="assets/img/blog_3.jpg" alt="Computer Vision Syndrome" class="blog-badge" />
+          </div>
+          <div class="blog-content">
+            <h4>Tips to overcome Computer Vision Syndrome</h4>
+            <a href="blogs.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="section-cta">
+        <a href="blogs.html" class="btn btn-outline">All Blogs <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / APPOINTMENT FORM -->
+  <!-- Add your bg image via style: style="background-image: url('assets/img/your-bg.jpg'); background-size: cover; background-position: center;" -->
+  <section class="contact-section section">
+    <div class="container">
+      <div class="contact-card">
+        
+
+        <!-- LEFT: Info -->
+        <div class="contact-info">
+          <h2>Bringing Clarity to Your Vision, Starting Today</h2>
+
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="far fa-clock"></i></div>
+            <div>
+              <strong>Clinical Hours:</strong>
+              <p>Monday – Saturday:&nbsp; 10:00 AM – 7:30 PM.</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <strong>Phone</strong>
+              <p>011-49147824, +91 9354409885, +91 9999175014</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <strong>Address</strong>
+              <p>E-368, Vikas Marg, Near Nirman Vihar Metro Station, Delhi – 110092.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Form -->
+        <div class="contact-form-wrap">
+          <h3>Enter your details</h3>
+          <form class="appointment-form" id="appointmentForm">
+
+            <!-- Row 1: Name (full width) -->
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Your name</label>
+                <input type="text" placeholder="" required />
+              </div>
+            </div>
+
+            <!-- Row 2: Email + Mobile -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email (optional)</label>
+                <input type="email" placeholder="" />
+              </div>
+              <div class="form-group">
+                <label>Mobile number</label>
+                <div class="phone-input">
+                  <span class="dial-code">+91</span>
+                  <input type="tel" placeholder="" required />
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 3: Treatment + Time -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Treatment needed</label>
+                <select>
+                  <option value="" disabled selected>Select</option>
+                  <option>LASIK Surgery</option>
+                  <option>ICL Surgery</option>
+                  <option>Cataract Surgery</option>
+                  <option>Retina Treatment</option>
+                  <option>Cornea Services</option>
+                  <option>Glaucoma</option>
+                  <option>Dry Eye Treatment</option>
+                  <option>Diabetic Retinopathy</option>
+                  <option>Pediatric Ophthalmology</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Time</label>
+                <input type="time" />
+              </div>
+            </div>
+
+            <!-- Button -->
+            <button type="submit" class="btn btn-primary btn-full">Make an Appointment</button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPANELMENTS BAR -->
+  <section class="empanelments-bar">
+    <div class="container empanelments-inner">
+      <div class="empanel-left">
+        <i class="fas fa-shield-alt"></i>
+        <div>
+          <strong>Empanelments &amp; Insurance Partners</strong>
+          <p>Cashless treatments &amp; reimbursement available with leading providers</p>
+        </div>
+      </div>
+      <a href="contact.html#insurance" class="btn btn-outline-sm">View Insurance Partners <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+ <!-- FAQ -->
+  <section class="faq-section section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-question">How can I book an appointment at Khanna Eye Center, Nirman Vihar?</summary>
+          <div class="faq-answer"><p>You can fill out the contact form or visit us for a walk-in appointment. However, walk-ins are subject to availability. We advise you to call or book an appointment before visiting.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">How long does it take for my eye checkup?</summary>
+          <div class="faq-answer"><p>A routine eye checkup typically takes 30–60 minutes, depending on your eye condition and the tests required. More comprehensive evaluations may take longer.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">What is the cost of an eye specialist consultation at Khanna Eye Center?</summary>
+          <div class="faq-answer"><p>Consultation charges may vary based on the specialist and the type of evaluation required. Please contact the centre directly for the latest consultation fees and appointment details.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">What eye treatment does Khanna Eye Center offer?</summary>
+          <div class="faq-answer"><p>Khanna Eye Center offers comprehensive eye care services, including LASIK, cataract surgery, retina treatment, glaucoma management, cornea care, pediatric ophthalmology, oculoplasty, and more.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Does Khanna Eye Center offer teleconsultations or video appointments?</summary>
+          <div class="faq-answer"><p>Teleconsultation availability may vary depending on the nature of your eye condition. Please contact our team to check eligibility and schedule a virtual consultation.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">What are the Khanna Eye Center timings?</summary>
+          <div class="faq-answer"><p>Khanna Eye Center is open from 10:00 AM to 7:30 PM, providing convenient access to consultations, diagnostic services, and specialized eye treatments throughout the day.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Does Khanna Eye Center accept health insurance?</summary>
+          <div class="faq-answer"><p>Yes, Khanna Eye Center accepts health insurance and reimbursements with leading providers.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Does Khanna Eye Center provide insurance claim support?</summary>
+          <div class="faq-answer"><p>Yes, our team assists patients with insurance-related documentation and claim procedures, helping ensure a smooth and hassle-free experience.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">What latest technologies does Khanna Eye Center use?</summary>
+          <div class="faq-answer"><p>Khanna Eye Center uses advanced technologies for cataract, LASIK, retina, glaucoma, and corneal treatments, including the world's fastest tracker system and the latest sutureless Micro Vitrectomy System.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">What precautions does Khanna Eye Center recommend during eye treatment?</summary>
+          <div class="faq-answer"><p>Patients should follow prescribed medications, attend scheduled follow-ups, avoid rubbing their eyes, and adhere to all post-treatment instructions provided by their eye specialist.</p></div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <h2>Khanna Eye Centre</h2>
+        </div>
+        <p>Khanna Eye Centre has two high tech, fully equipped centres in Delhi. It is providing best and latest international standard services at affordable price to its patients &amp; attaining new heights.</p>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="treatments.html">Eye Treatments</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-searches">
+        <h4>Popular Searches</h4>
+        <ul>
+          <li><a href="treatments.html#lasik">Lasik Eye Surgery</a></li>
+          <li><a href="treatments.html#cataract">Cataract</a></li>
+          <li><a href="treatments.html#glaucoma">Glaucoma</a></li>
+          <li><a href="treatments.html#retina">Retina Treatment</a></li>
+          <li><a href="treatments.html#cvs">Computer Vision Syndrome Treatment</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Khanna Eye Center. All Rights Reserved. Design By Scinan Media</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+
+  <!-- REVIEWS SLIDER SCRIPT: 3 groups of 2 reviews, scrolls 2 times (dot 0→1→2) -->
+  <script>
+    (function() {
+      var track  = document.getElementById('reviewsTrack');
+      var dots   = document.querySelectorAll('.reviews-controls .slider-dot-btn');
+      var groups = document.querySelectorAll('#reviewsTrack .review-slide-group');
+      var total  = groups.length; // 3
+      var current = 0;
+
+      function goTo(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        current = index;
+        // Each group is 1/total of the track width
+        track.style.transform = 'translateX(-' + (index * (100 / total)) + '%)';
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
+      }
+
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() { goTo(i); });
+      });
+
+      // Auto-advance every 5s
+      setInterval(function() { goTo(current + 1); }, 5000);
+    })();
+  </script>
+</body>
+</html>
