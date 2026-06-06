@@ -201,7 +201,7 @@ p { color: var(--text-muted); }
   /* Logo at natural container left edge with standard 24px padding from .container */
 }
 /* Logo: natural flow, no extra margin adjustments */
-.logo { flex-shrink: 0;margin-left: -140px; }
+.logo { flex-shrink: 0;margin-left: -80px; }
 .logo-img-wrap { height: 52px; display: flex; align-items: center; }
 .logo-img-wrap img { height: 100%; width: auto; object-fit: contain; }
 
