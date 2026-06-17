@@ -1,5 +1,5 @@
 /* =========================================================
-   KHANNA EYE CENTRE — MAIN JS
+   KHANNA EYE CENTRE — MAIN JS (FULLY OPTIMIZED)
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -164,143 +164,144 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---- APPOINTMENT FORM (contact section) ---- */
-  /* ---- APPOINTMENT FORM VALIDATION ---- */
-var apptForm = document.getElementById('appointmentForm');
-if (apptForm) {
-  apptForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    var name    = document.getElementById('cf-name');
-    var phone   = document.getElementById('cf-phone');
-    var treat   = document.getElementById('cf-treatment');
-    var success = document.getElementById('cf-success');
-
-    var isValid = true;
-
-    /* Name */
-    if (!name.value.trim()) {
-      name.style.borderColor = '#e53935';
-      isValid = false;
-    } else {
-      name.style.borderColor = '#2e7d32';
-    }
-
-    /* Phone — must be 10 digits */
-    if (phone.value.trim().length !== 10) {
-      document.getElementById('cf-phone-wrap').style.borderColor = '#e53935';
-      isValid = false;
-    } else {
-      document.getElementById('cf-phone-wrap').style.borderColor = '#2e7d32';
-    }
-
-    /* Treatment */
-    if (!treat.value) {
-      treat.style.borderColor = '#e53935';
-      isValid = false;
-    } else {
-      treat.style.borderColor = '#2e7d32';
-    }
-
-    if (!isValid) return;
-
-    /* Success */
-    var btn = this.querySelector('button[type="submit"]');
-    btn.textContent = "Booked! We'll contact you soon.";
-    btn.style.background = '#1b5e20';
-    btn.disabled = true;
-
-    setTimeout(function () {
-      btn.textContent = 'Make an Appointment';
-      btn.style.background = '';
-      btn.disabled = false;
-      apptForm.reset();
-      name.style.borderColor = '';
-      document.getElementById('cf-phone-wrap').style.borderColor = '';
-      treat.style.borderColor = '';
-    }, 3000);
-
-  });
-
-  /* Phone: only allow numbers */
-  var phoneInput = document.getElementById('cf-phone');
-  if (phoneInput) {
-    phoneInput.addEventListener('input', function () {
-      this.value = this.value.replace(/\D/g, '').slice(0, 10);
-    });
-  }
-}
-  /* ---- APPOINTMENT MODAL ---- */
-setTimeout(function() {
-  var modalOverlay = document.getElementById('modalOverlay');
-  var modalClose   = document.getElementById('modalClose');
-  var modalForm    = document.getElementById('modalForm');
-
-  if (!modalOverlay) {
-    console.error('Modal overlay not found!');
-    return;
-  }
-
-  function openModal() {
-    modalOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    modalOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  var modalBtns = document.querySelectorAll('.open-modal');
-  console.log('Modal buttons found:', modalBtns.length);
-
-  modalBtns.forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
+  var apptForm = document.getElementById('appointmentForm');
+  if (apptForm) {
+    apptForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      e.stopPropagation();
-      openModal();
-    });
-  });
 
-  if (modalClose) {
-  modalClose.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    closeModal();
-  });
-}
-console.log('modalClose found:', modalClose);
+      var name    = document.getElementById('cf-name');
+      var phone   = document.getElementById('cf-phone');
+      var treat   = document.getElementById('cf-treatment');
 
-  modalOverlay.addEventListener('click', function(e) {
-    if (e.target === modalOverlay) closeModal();
-  });
+      var isValid = true;
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-  });
+      /* Name */
+      if (!name || !name.value.trim()) {
+        if (name) name.style.borderColor = '#e53935';
+        isValid = false;
+      } else {
+        name.style.borderColor = '#2e7d32';
+      }
 
-  if (modalForm) {
-    modalForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+      /* Phone — must be 10 digits */
+      var phoneWrap = document.getElementById('cf-phone-wrap');
+      if (!phone || phone.value.trim().length !== 10) {
+        if (phoneWrap) phoneWrap.style.borderColor = '#e53935';
+        isValid = false;
+      } else {
+        if (phoneWrap) phoneWrap.style.borderColor = '#2e7d32';
+      }
+
+      /* Treatment */
+      if (!treat || !treat.value) {
+        if (treat) treat.style.borderColor = '#e53935';
+        isValid = false;
+      } else {
+        treat.style.borderColor = '#2e7d32';
+      }
+
+      if (!isValid) return;
+
+      /* Success */
       var btn = this.querySelector('button[type="submit"]');
       btn.textContent = "Booked! We'll contact you soon.";
       btn.style.background = '#1b5e20';
       btn.disabled = true;
-      setTimeout(function() {
+
+      setTimeout(function () {
         btn.textContent = 'Make an Appointment';
         btn.style.background = '';
         btn.disabled = false;
-        modalForm.reset();
-        closeModal();
+        apptForm.reset();
+        if (name) name.style.borderColor = '';
+        if (phoneWrap) phoneWrap.style.borderColor = '';
+        if (treat) treat.style.borderColor = '';
       }, 3000);
     });
+
+    /* Phone: only allow numbers */
+    var phoneInput = document.getElementById('cf-phone');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '').slice(0, 10);
+      });
+    }
   }
-}, 100);
 
-  /* ---- ACTIVE NAV LINK ---- */
-  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav a').forEach(function (link) {
-    var href = link.getAttribute('href');
-    if (href && href.split('#')[0] === currentPage) link.classList.add('active');
-  });
+  /* ---- APPOINTMENT MODAL ---- */
+  setTimeout(function() {
+    var modalOverlay = document.getElementById('modalOverlay');
+    var modalClose   = document.getElementById('modalClose');
+    var modalForm    = document.getElementById('modalForm');
 
+    if (!modalOverlay) return;
+
+    function openModal() {
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.open-modal').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal();
+      });
+    });
+
+    if (modalClose) {
+      modalClose.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal();
+      });
+    }
+
+    modalOverlay.addEventListener('click', function(e) {
+      if (e.target === modalOverlay) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    if (modalForm) {
+      modalForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button[type="submit"]');
+        btn.textContent = "Booked! We'll contact you soon.";
+        btn.style.background = '#1b5e20';
+        btn.disabled = true;
+        setTimeout(function() {
+          btn.textContent = 'Make an Appointment';
+          btn.style.background = '';
+          btn.disabled = false;
+          modalForm.reset();
+          closeModal();
+        }, 3000);
+      });
+    }
+  }, 100);
+
+  /* ---- TREATMENTS MOBILE ACCORDION CLICK LOGIC ---- */
+
+
+document.querySelectorAll('.tacc-header').forEach(function(header){
+
+    header.onclick = function(){
+
+        const body = this.nextElementSibling;
+
+        body.classList.toggle('open');
+        this.classList.toggle('open');
+
+        console.log(body.className);
+    }
+
+});
 });
